@@ -1,0 +1,120 @@
+.main {
+    height: 62.5vh;
+    margin: 32px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.shortList {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.shortList h1 {
+    color: grey;
+    text-align: center;
+}
+
+.note {
+
+    text-align: center;
+    color: rgb(102, 99, 99);
+    
+}
+
+.note span {
+    padding: 5px;
+    background-color: rgb(88, 86, 86);
+    color: rgb(253, 245, 230);
+
+}
+
+.details {
+    width: 60%;
+    margin: 32px auto 0 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details .input {
+    width: 60%;
+    padding: 1.2rem;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+
+
+.time {
+    width: 60%;
+    margin: 32px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.time .dnt {
+    /* width: 50%;  */
+    padding: 1.2rem;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+
+.review {
+    padding: 2rem;
+    display: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.review h3 {
+    color: grey;
+    text-align: center;
+}
+
+.reviewItemlist {
+    padding: 2rem;
+}
+
+.note {
+
+    text-align: center;
+    
+    color: rgb(102, 99, 99);
+    
+}
+
+.note span {
+
+    background-color: rgb(88, 86, 86);
+
+}
+
+.dnt {
+    padding: 1rem;
+}
+
+.reviewButtons {
+    display: flex;
+    justify-content: space-between;
+    
+}
+

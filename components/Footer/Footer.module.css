@@ -1,0 +1,27 @@
+.status {
+    background-color: rgb(88, 86, 86);
+    height: 3.5rem;
+    padding: 1.4rem;
+    color: rgb(253, 245, 230);
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.mediaSection {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (min-width: 640px) {
+    .mediaSection {
+        margin-top: 4px;
+    }
+}
+
+
+.link {
+    margin-inline: 1rem;
+    cursor: pointer;
+}

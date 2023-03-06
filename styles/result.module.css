@@ -1,0 +1,33 @@
+.result {
+  height: 62.5vh;
+  margin: 32px auto;
+}
+
+.table {
+    margin: 0 auto;
+    width: 50%;
+    padding: 2rem;
+}
+
+.tableData {
+  text-align: center;
+  padding: 1rem;
+}
+
+.table tr:nth-child(even){background-color: #f2f2f2;}
+
+.winnerSection {
+  display: flex;
+  gap: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.finalResult {
+  padding: 3rem;
+  margin: 0 auto;
+}
+
