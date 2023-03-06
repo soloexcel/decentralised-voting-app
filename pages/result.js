@@ -74,15 +74,21 @@ const Result = ({ shortlistedNames }) => {
         )))}
       </tbody>
     </table>
-    <div className={Style.winnerSection}>
-      { <Button btnName={"Display Winners"} handleClick = {()=>{rehandleWinners()}}/> }
-      { <Button btnName={"Start New Election"} handleClick = {()=>{newElection()}}/> }
-      <div className={Style.finalResult}> {winner && totalVotes && (
-       <p> {winner} won the election, with {totalVotes} votes casted</p>
-      )}</div>
-    </div>
+      <div className={Style.winnerSection}>
+            <div className={Style.finalResult}> {winner && totalVotes && (
+                <p> {winner} won the election, with {totalVotes} votes casted</p>
+                )}
+            </div>
+            <div className={Style.checkWinner}>
+            { <Button btnName={"Display Winners"} handleClick = {()=>{rehandleWinners()}}/> }
+            { <Button btnName={"Start New Election"} handleClick = {()=>{newElection()}}/> }
+            </div>
+        
+        
+      </div>
     </div>
   );
 };
+
 
 export default Result

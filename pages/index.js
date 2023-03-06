@@ -30,11 +30,14 @@ const router = useRouter()
 
           <div className={Style.voter}>
             <h3>Voters have the final say !!!. </h3>
-            <p>As a voter , you have the ability to register to vote, view the list of candidates, and cast your vote. Follow these steps to cast your vote:</p>
+            <p>As a voter , you are required to register before you can vote, view the list of candidates, and cast your vote. Follow these steps to cast your vote:</p>
             <p>Connect your wallet to the dapp</p>
-            <p>Click the 'Register to Vote' button</p>
+            <p>Click the 'Register' link</p>
+            <p>Click the 'Register' button</p>
             <p>Once registered, view the list of candidates and select the candidate you want to vote for</p>
-            <p>Click the 'Cast Vote' button to submit your vote.</p>
+            <p>Click the 'Vote' button to submit your vote.</p>
+            <p>Wait for the vote session to elapse, for the result to be announced.</p>
+
           </div>
       </div>
 

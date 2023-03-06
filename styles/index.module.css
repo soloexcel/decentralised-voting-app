@@ -116,3 +116,14 @@
     background-color: rgba(223, 217, 217, 0.350);
 }
 
+.voter p:nth-child(7){
+    margin-right: 70px;
+    background-color: rgba(223, 217, 217, 0.300);
+}
+
+.voter p:nth-child(8){
+    margin-right: 80px;
+    background-color: rgba(223, 217, 217, 0.280);
+}
+
+

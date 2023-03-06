@@ -5,13 +5,13 @@ import { ElectionContext } from '../../context/Context'
 
 const Status = () => {
 
-  const { walletAddr } = useContext(ElectionContext)
+  const { walletAddr, actualVoters } = useContext(ElectionContext)
    return (
     <div className={Style.status}>
       <FaUserAlt className={Style.userIcon}/>
       <p>
         <span>Wallet Address: {`${walletAddr.substring(0, 7)}...${walletAddr.substring(35, 42)}`}</span>
-        <span>Status: Voted / Yet to Vote</span>
+        <span>Status: {actualVoters.hasVoted ? "Voted" : "Yet to Vote"}</span>
       </p>
     </div>
   )

@@ -115,7 +115,7 @@ const isValidEndTime = (endTime) => {
       {isCandidateListed ? <CandidateTable shortlistedNames={reviewItem} /> : (
         <div className={Style.main}>
           <div className={Style.shortList}>
-          <h1>Shortlist candidates</h1>
+          <h1>SHORTLIST CANDIDATES</h1>
           <p className={Style.note}>
             <span>NOTE</span> You may add as much contestants as needed one at a time before you submit.
           </p>
@@ -129,15 +129,15 @@ const isValidEndTime = (endTime) => {
   
           <div className={Style.time}>
             <div>
-                <input className={Style.dnt} type="text" placeholder="Vote Start Date" value={startDate} onChange={startDatehandler} />
+                <input className={Style.dnt} type="text" placeholder="Vote StartDate: MM/DD/YYYY" value={startDate} onChange={startDatehandler} />
                 
-                  <input className={Style.dnt} type="text" placeholder="Vote End Date" value={endDate} onChange={endDatehandler} />
+                  <input className={Style.dnt} type="text" placeholder="Vote EndDate: MM/DD/YYYY" value={endDate} onChange={endDatehandler} />
             </div>
 
             <div>
-                  <input className={Style.dnt} type="text" placeholder="Vote Start Time" value={startTime} onChange={startTimehandler} />
+                  <input className={Style.dnt} type="text" placeholder="Vote StartTime: HH:MM A" value={startTime} onChange={startTimehandler} />
 
-                  <input className={Style.dnt} type="text" placeholder="Vote End Time" value={endTime} onChange={endTimehandler} />
+                  <input className={Style.dnt} type="text" placeholder="Vote EndTime: HH:MM A" value={endTime} onChange={endTimehandler} />
                   
             </div>
   
