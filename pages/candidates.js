@@ -148,7 +148,7 @@ const isValidEndTime = (endTime) => {
           {/* </p> */}
           </div>
   
-          {/* <div className={Style.button}>
+          {/* <div className={Style.button}> 
             
         </div> */}
   
@@ -163,7 +163,7 @@ const isValidEndTime = (endTime) => {
             {
             
             reviewItem ? reviewItem.map((el, i) => (
-              <div key={i}>{el  + "  " + reviewItem.length}</div>
+              <div key={i}>{el}</div>
             )):""}
           </div>
   

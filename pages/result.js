@@ -10,30 +10,66 @@ const Result = ({ shortlistedNames }) => {
   const [winner, setWinner] = useState("");
   const [totalVotes,setTotalVotes] = useState(0);
  // const [started,setStarted] = useState(false);
-  const rehandleWinners = async   ()=>{
-   const votingEnded = await isVotingEnd();
+//   const rehandleWinners = async   ()=>{
+//    const votingEnded = await isVotingEnd();
 
-   if (votingEnded){
-    const nada =  await getTotalAndWinner()
-    setWinner(nada.winner)
-    setTotalVotes(nada.totalVotes)
-    console.log(nada);
-   }
- }
+//    if (votingEnded){
+//     const nada =  await getTotalAndWinner()
+//     setWinner(nada.winner)
+//     setTotalVotes(nada.totalVotes)
+//     console.log(nada);
+//    }
+//  }
 
 
- useEffect(()=>{
- async function handleWinners (){
+//  useEffect(()=>{
+//  async function handleWinners (){
+//   const votingEnded = await isVotingEnd();
+//   console.log("voting "+ votingEnded)
+
+//   if (votingEnded){
+//    const nada =  await getTotalAndWinner()
+//    setWinner(nada.winner)
+//    setTotalVotes(nada.totalVotes)
+//    console.log(nada);
+//   }
+// }handleWinners()},[])
+
+
+const rehandleWinners = async   ()=>{
   const votingEnded = await isVotingEnd();
-  console.log("voting "+ votingEnded)
 
   if (votingEnded){
    const nada =  await getTotalAndWinner()
+   if(nada){
    setWinner(nada.winner)
+   }
+   if(nada){
    setTotalVotes(nada.totalVotes)
+   }
    console.log(nada);
   }
+}
+
+
+useEffect(()=>{
+async function handleWinners (){
+ const votingEnded = await isVotingEnd();
+ console.log("voting "+ votingEnded)
+
+ if (votingEnded){
+  const nada =  await getTotalAndWinner()
+  if(nada){
+  setWinner(nada.winner)
+  }
+  if(nada){
+  setTotalVotes(nada.totalVotes)
+  }
+  console.log(nada);
+ }
 }handleWinners()},[])
+
+
 
   useEffect(() => {
     
@@ -56,6 +92,8 @@ const Result = ({ shortlistedNames }) => {
     //alert(started)
     populateresult();
   }, [winner,totalVotes]);
+
+
   return (
     <div className={Style.result}>
       <table className={Style.table}>
