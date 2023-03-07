@@ -13,6 +13,7 @@ Olalekan Solomon Awoyemi
 
 ### PROJECT LINK
 `A NOTE FOR VOTERS`: Please, you are to wait for the admin / contract owner to start a new voting session before you can vote.
+###### Also wait for your transactions to conclude before continuing another process.  
 
 ```bash
 decentralised-voting-app.vercel.app
@@ -133,6 +134,8 @@ npx hardhat node
 ```shell
 npx hardhat run script/deploy.js --network localhost
 ```
+###### While interacting with the project, please wait for your transactions to conclude before continuing another process.
+
 
 ##### Other Requirement
 - Make sure Metamask is installed on your browser.
