@@ -67,7 +67,7 @@ async function handleWinners (){
   }
   console.log(nada);
  }
-}handleWinners()},[])
+}handleWinners},[])
 
 
 
