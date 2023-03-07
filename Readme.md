@@ -12,8 +12,11 @@ PROWESS is an election conducting application where candidates can be added (sol
 Olalekan Solomon Awoyemi
 
 ### PROJECT LINK
-`A NOTE FOR VOTERS`: Please, you are to wait for the admin / contract owner to start a voting session before you can vote.
+`A NOTE FOR VOTERS`: Please, you are to wait for the admin / contract owner to start a new voting session before you can vote.
 
+```bash
+decentralised-voting-app.vercel.app
+```
 
 
 ### CONTRACT EXPLANATION
