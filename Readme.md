@@ -12,6 +12,9 @@ PROWESS is an election conducting application where candidates can be added (sol
 Olalekan Solomon Awoyemi
 
 ### PROJECT LINK
+`A NOTE FOR VOTERS`: Please, you are to wait for the admin / contract owner to start a voting session before you can vote.
+
+
 
 ### CONTRACT EXPLANATION
 The smart contract presented is an implementation of an election process where voters can cast their votes for a set of candidates. The contract allows for the addition of contestants by the admin, registration of voters, and casting of votes. The smart contract provides a transparent and decentralized system for conducting elections without the need for intermediaries.
@@ -90,12 +93,12 @@ The smart contract provides a simple and efficient way to hold elections in a tr
 ### CLONE THE REPOSITORY
 
 ```shell
-git clone https://github.com/soloexcel/decentralized-voting-app.git
+git clone https://github.com/soloexcel/decentralised-voting-app.git
 ```
 
 ##### change the working directory
 ```shell
-cd decentralized-voting-app
+cd decentralised-voting-app
 ```
 
 ##### Dependencies Installation
@@ -107,10 +110,11 @@ npm install
 ```shell
 npm run dev
 ```
-==HINT== After starting the local development server,  click on the port link or just copy to the Chrome Browser.
+`HINT` After starting the local development server,  click on the port link or just copy to the Chrome Browser.
 
 ```shell
 http://localhost:3000
+
 ```
 
 ##### CONTRACT SETUP
