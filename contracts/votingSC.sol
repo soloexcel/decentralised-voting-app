@@ -135,13 +135,14 @@ contract Election {
         }
         return candidates[winningCandidateIndex].name;
     }
-    function newElection() public {
+   function newElection() public onlyAdmin(){
         delete candidates;
         totalVotes = 0;
         resetMapping();
         delete registeredVoters;
         contestantsAdded = false;
     }
+    
     function resetMapping () public {
         if(registeredVoters.length > 0){
             for(uint256 i = 0 ; i < registeredVoters.length ; i++){
