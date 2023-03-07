@@ -71,10 +71,15 @@ export const ContextProvider = ({ children }) => {
 const WalletTracker = async () => {
   if(typeof window != "undefined" && typeof window.ethereum != "undefined") {
     
-    window.ethereum.on("accountsChanged", (accounts) => {
-      setWalletAddr(accounts[0])
-      console.log(accounts[0])
-    })
+    try{
+      window.ethereum.on("accountsChanged", (accounts) => {
+        setWalletAddr(accounts[0])
+        console.log(accounts[0])
+      })
+
+    } catch (error) {
+      console.log(error.data.message)
+    }
   } else {
     // metamask is not installed.
     setWalletAddr("")
@@ -252,9 +257,10 @@ const getCandidate = async (candidateIndex) => {
     }
   } catch (error) {
     console.log("Error transaction unsuccessful: " + error);
-    alert("Error transaction unsuccessful: " + error);
+    alert("Error transaction unsuccessful: " + error.data.message);
   }
 };
+
 
 const getCandidateLength = async()=>{
   try{
@@ -268,9 +274,11 @@ return length.toNumber();
       //alert("please install metamask")
     }
   }catch(error){
-    alert(error + "transaction unsuccessfu;")
+    alert(error.data.message + " transaction unsuccessfu;")
   }
 }
+
+
 const isVotingEnd = async ()=>{
   const currentTimestampInSeconds = Math.round(Date.now() / 1000);
   
@@ -291,7 +299,7 @@ const isVotingEnd = async ()=>{
     }
   }
   catch(error){
-    alert(error + "Transaction successful")
+    alert(error.data.message + "Transaction successful")
   }
 }
 const getTotalAndWinner = async ()=>{
@@ -303,7 +311,7 @@ const getTotalAndWinner = async ()=>{
       const contract = await contractConnection();
       console.log("contract connected")
       const endTime = await getVTEnd();
-      console.log("end Time gotten " + endTime)
+      console.log("End Time gotten " + endTime)
       if (currentTimestampInSeconds >= endTime){
       const winner = await contract.getWinner();
       const totalVotes = await contract.getTotalVotes();
@@ -313,9 +321,11 @@ const getTotalAndWinner = async ()=>{
         return ("Voting result to be displayed after voting has ended", "vote Count yet to be correlated")
       }
   }}catch(error){
-    alert(error + "transaction unsuccessful")
+    alert(error.data.message + "transaction unsuccessful")
   }
-}
+};
+
+
 const newElection = async ()=>{
   console.log("function triggered")
   const currentTimestampInSeconds = Math.round(Date.now() / 1000);
@@ -323,18 +333,22 @@ const newElection = async ()=>{
     const contract = await contractConnection();
     const endTime = await getVTEnd();
      if (currentTimestampInSeconds >= endTime){
-      console.log("new election can be created");
+      console.log("New election can be created");
 
       await contract.newElection();
       router.push("/candidates")
-      alert("new election created");
+      alert("New election created.");
      }
   }catch(error){
-     alert(`${error}`);
+     alert(`${error.data.message}`);
   }
-}
+};
+
+
+
+
   return (
-    <ElectionContext.Provider value = {{ connectWallet,getVTEnd,connectedWallet,voters,getCandidate,getCandidateLength,actualVoters,voters,walletAddr, fetchContract, registerVoter, castVote, candidates,getTotalAndWinner,isVotingEnd,newElection}}>
+    <ElectionContext.Provider value = {{ connectWallet,getVTEnd,connectedWallet,voters,getCandidate,getCandidateLength,actualVoters,voters,walletAddr, fetchContract, registerVoter, castVote, candidates,getTotalAndWinner,isVotingEnd,newElection }}>
         { children }
     </ElectionContext.Provider>
   );
