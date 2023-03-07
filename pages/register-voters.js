@@ -29,9 +29,10 @@ const registerVoters = () => {
     */
 
 
-     useEffect( ()=>{
+     useEffect (()=>{
          voters()
      },[actualVoters])
+     
      useEffect( ()=>{
       console.log(actualVoters)
      
@@ -46,11 +47,7 @@ const registerVoters = () => {
     
         <div className={Style.registerfield}>
         PLEASE CLICK BUTTON BELOW TO REGISTER SO YOU'RE ELIGIBLE FOR VOTING
-            <Button btnName='Register' handleClick={()=>{
-              registerVoter()
-
-              
-              }}/>
+            <Button btnName='Register' handleClick={()=> {registerVoter()}}/>
         </div>
 
 <div className={Style.registeredVoter}>

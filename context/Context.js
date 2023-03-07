@@ -78,7 +78,7 @@ const WalletTracker = async () => {
       })
 
     } catch (error) {
-      console.log(error.data.message)
+      console.log(error.message)
     }
   } else {
     // metamask is not installed.
@@ -123,7 +123,7 @@ console.log(endTimeStamp);
     alert(`${error}`);
   }
 }else{
-  alert("Sorry Starttime cant be in the past pick a time higher than current time")
+  alert("Sorry StartTime can't be in the past, pick a time higher than current time")
 }
   
 
@@ -147,24 +147,23 @@ const getVTEnd = async()=>{
 const registerVoter = async() => {
 
   try{
-    if (walletAddr)
-  {
+    if (walletAddr) {
     const contract = await contractConnection();
     await contract.registerVoter();
     alert(`${walletAddr} has been registered to vote you're ready to cast your vote once voting begins PLEASE WAIT FOR TRANSACTION CONFIRMATION`)
     console.log(`${walletAddr} has been registered to vote you're ready to cast your vote once voting `)
     router.push("/cast-vote")
-  }
-    else{
-      alert("please connect wallet");
-    }} catch(error){
+    } else {
+      alert("please connect wallet");}
+
+    } catch(error){
       console.log(error);
       // const errorString = error.data.message;
       // const reason = errorString.replace(
       //   /[^a-zA-Z0-9 ]/g,
       //   ""
       // );
-      alert(`registration unsucessful : ${error} please come back to this page to try again`);
+      alert(`User already registered.`);
     }
 }
 
@@ -172,17 +171,18 @@ const registerVoter = async() => {
 // cast vote 
 
 const getVotingStart = async()=>{
-  try{
-    if(walletAddr){
-      const contract = await contractConnection();
-      const vtStartTime = await contract.getVotingStart();
-      console.log("start time context " + vtStartTime)
-      return vtStartTime;
-    }
-  }catch(error){
-    alert(error)
-  }
+  try {
+        if (walletAddr) {
+          const contract = await contractConnection();
+          const vtStartTime = await contract.getVotingStart();
+          console.log("start time context " + vtStartTime)
+          return vtStartTime;
+        }
+  } catch(error){
+    alert(error) }
 }
+
+
 const castVote = async (candidateIndex)=>{
   console.log("function triggered")
   const currentTimestampInSeconds = Math.round(Date.now() / 1000);
@@ -204,11 +204,12 @@ const castVote = async (candidateIndex)=>{
       alert(`please connect wallet`);
       console.log("please connect wallet")
     }
-  }catch(error){
+  } catch(error){
 
     console.log(error);
+    alert("You already voted.")
     
-    alert(`couldn't cast vote : ${error} please come back to this page to try again`);
+    // alert(`couldn't cast vote : ${error} please come back to this page to try again`);
   }
 }
 // define voters function outside of component
@@ -240,7 +241,7 @@ const voters = async () => {
     
   } catch (error) {
     console.log(error);
-    alert(`${error} : transaction unsuccessful`);
+    // alert("Connect wallet before proceeding to register.");
   }
 };
 // to display candidates and vote count
@@ -257,7 +258,7 @@ const getCandidate = async (candidateIndex) => {
     }
   } catch (error) {
     console.log("Error transaction unsuccessful: " + error);
-    alert("Error transaction unsuccessful: " + error.data.message);
+    alert("Error transaction unsuccessful: " + error.message);
   }
 };
 
@@ -274,7 +275,7 @@ return length.toNumber();
       //alert("please install metamask")
     }
   }catch(error){
-    alert(error.data.message + " transaction unsuccessfu;")
+    alert(error.message + " transaction unsuccessfu;")
   }
 }
 
@@ -299,7 +300,7 @@ const isVotingEnd = async ()=>{
     }
   }
   catch(error){
-    alert(error.data.message + "Transaction successful")
+    alert(error.message + "Transaction successful")
   }
 }
 const getTotalAndWinner = async ()=>{
@@ -321,7 +322,7 @@ const getTotalAndWinner = async ()=>{
         return ("Voting result to be displayed after voting has ended", "vote Count yet to be correlated")
       }
   }}catch(error){
-    alert(error.data.message + "transaction unsuccessful")
+    alert(error.message + "transaction unsuccessful")
   }
 };
 
@@ -340,7 +341,7 @@ const newElection = async ()=>{
       alert("New election created.");
      }
   }catch(error){
-     alert(`${error.data.message}`);
+     alert("Sorry, only admin can start a new election.");
   }
 };
 

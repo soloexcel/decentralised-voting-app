@@ -9,7 +9,7 @@ const Status = () => {
   const [status, setStatus] = useState("Yet to Vote");
 
   useEffect(() => {
-    voters();
+    voters;
   }, [voters]);
 
   useEffect(() => {
