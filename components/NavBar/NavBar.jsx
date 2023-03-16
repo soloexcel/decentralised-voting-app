@@ -13,8 +13,8 @@ const { ownerAddress,  } = useContext(ElectionContext);
 
 const itemsArray = [
   {
-    item: "Candidates",
-    link: "candidates",
+    item: "Admin",
+    link: "admin",
     tag: "admin"
   },
 
