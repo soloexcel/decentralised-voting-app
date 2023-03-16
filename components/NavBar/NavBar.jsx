@@ -49,11 +49,11 @@ return (
           if (el.tag === "admin" && walletAddr !== ownerAddress) {
             return null; // skip this item
           }
-          return (
+          else {
             <div key={i + 1} className={Style.item}>
               <Link href={{ pathname: `${el.link}` }}>{el.item}</Link>
             </div>
-          )
+          }
         })}
       </div>
 
