@@ -39,7 +39,8 @@ export const ContextProvider = ({ children }) => {
       if(typeof window != "undefined" && typeof window.ethereum != "undefined") {
         try {
           const accounts = await window.ethereum.request({method: "eth_requestAccounts", });
-          console.log(accounts[0])
+          console.log("WalletAddr",accounts[0])
+          console.log("ownerAddress", ownerAddress)
           setWalletAddr(accounts[0])
         } catch (error) {
           console.log(error)
