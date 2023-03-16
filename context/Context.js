@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import {ethers} from 'ethers'
 import Web3Modal from 'web3modal'
-import { contractAddress, electionABI } from './config'
+import { contractAddress, ownerAddress, electionABI } from './config'
 
 
 // const contractDetails = (signer) => new ethers.Contract(contractAddress, electionABI, signer);
@@ -27,8 +27,7 @@ export const ElectionContext = React.createContext();
 export const ContextProvider = ({ children }) => {
   const router = useRouter();
   const [actualVoters, setActualVoters] = useState([]);
-  const [walletAddr, setWalletAddr] = useState("")
-  const [names,setNames] = useState("");
+  const [walletAddr, setWalletAddr] = useState("");
 
   useEffect(() => {
     connectedWallet();
@@ -87,6 +86,7 @@ const WalletTracker = async () => {
   }
 };
 
+
 // contestants, and voting start date and end date timestamps
 const candidates = async (candidateNames, votingStartTime, votingEndTime, minVotes) => {
   
@@ -94,7 +94,7 @@ const candidates = async (candidateNames, votingStartTime, votingEndTime, minVot
 // Convert the timestamp to a Date object
 // NOTE: vst means votingStartTime
 // NOTE: vet means votingEndTime
-setNames(candidateNames);
+// setNames(candidateNames);
 console.log("candidates   :   " + candidateNames)
 const vst = new Date(votingStartTime);
 const vet = new Date(votingEndTime);
@@ -111,7 +111,7 @@ console.log(endTimeStamp);
   const contract = await contractConnection();
   await contract.contestants(candidateNames, startTimeStamp,endTimeStamp, minVotes);
   alert("PLEASE WAIT FOR TRANSACTION CONFIRMATION")
-  router.push("/register-voters")
+  // router.push("/register-voters")
   console.log("transaction succesful")
   }catch(error){
     console.log(error);
@@ -349,7 +349,7 @@ const newElection = async ()=>{
 
 
   return (
-    <ElectionContext.Provider value = {{ connectWallet,getVTEnd,connectedWallet,voters,getCandidate,getCandidateLength,actualVoters,voters,walletAddr, fetchContract, registerVoter, castVote, candidates,getTotalAndWinner,isVotingEnd,newElection }}>
+    <ElectionContext.Provider value = {{ connectWallet,getVTEnd,connectedWallet, voters,getCandidate,getCandidateLength,actualVoters,voters,walletAddr, ownerAddress, fetchContract, registerVoter, castVote, candidates,getTotalAndWinner,isVotingEnd,newElection }}>
         { children }
     </ElectionContext.Provider>
   );

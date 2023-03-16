@@ -9,7 +9,7 @@ const Footer = () => {
   const socialMediaLinks = [
     {
       name: "github",
-      link: "https://github.com/soloexcel/nftdapp",
+      link: "https://github.com/soloexcel/decentralised-voting-app",
       icon: <FaGithub/>,
     },
 

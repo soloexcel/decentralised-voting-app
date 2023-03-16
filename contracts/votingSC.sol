@@ -35,6 +35,11 @@ contract Election {
          admin = msg.sender;
    }
 
+   modifier onlyAdmin (){
+        require(msg.sender == admin, "Sorry Only Administrator can perform this operation");
+        _;
+    }
+
     // add candidate's name with calculated vote duration timestamp.
     function contestants(string[] memory candidateNames, uint256 votingStartTime, uint256 votingEndTime, uint256 minVotes) public onlyAdmin()  {
         // candidates.push(Candidate({name: _name, voteCount: 0}));
@@ -54,12 +59,6 @@ contract Election {
         isVotingOpen = true;  
         contestantsAdded = true; 
     }
-
-    modifier onlyAdmin (){
-        require(msg.sender == admin, "Sorry Only Administrator can perform this operation");
-        _;
-    }
-
 
    
     // Register a voter

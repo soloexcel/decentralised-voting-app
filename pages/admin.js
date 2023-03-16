@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Style from '../styles/candidate.module.css';
+import Style from '../styles/admin.module.css';
 import { useRouter } from 'next/router';
 import { Button, CandidateTable } from '../components/componentsIndex';
 import { ElectionContext } from '../context/Context';
@@ -106,13 +106,12 @@ const isValidEndTime = (endTime) => {
       console.log(votingStartTime)
       console.log(votingEndTime)
       candidates(reviewItem, votingStartTime, votingEndTime, minVotes)
-      setIsCandidateListed(true)
+    
     }
   }
 
   return (
-    <div>
-      {isCandidateListed ? <CandidateTable shortlistedNames={reviewItem} /> : (
+
         <div className={Style.main}>
           <div className={Style.shortList}>
           <h1>SHORTLIST CANDIDATES</h1>
@@ -187,9 +186,7 @@ const isValidEndTime = (endTime) => {
           </div>
         </div>
       </div>
-      )}
-    </div>
-  );
+      )
 };
 
 export default Candidate;
