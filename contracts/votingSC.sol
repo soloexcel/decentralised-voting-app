@@ -40,6 +40,17 @@ contract Election {
         _;
     }
 
+    // transfer ownership to evaluator
+    function transferOwnership(address _address) public {
+        require(msg.sender == admin, "Only the owner has the right to transfer ownership.");
+        admin = _address;
+    }
+
+    // get admin
+    function getAdmin() external view returns (address) {
+        return admin;
+    }
+
     // add candidate's name with calculated vote duration timestamp.
     function contestants(string[] memory candidateNames, uint256 votingStartTime, uint256 votingEndTime, uint256 minVotes) public onlyAdmin()  {
         // candidates.push(Candidate({name: _name, voteCount: 0}));
@@ -59,7 +70,6 @@ contract Election {
         isVotingOpen = true;  
         contestantsAdded = true; 
     }
-
    
     // Register a voter
     function registerVoter() public {
@@ -87,11 +97,13 @@ contract Election {
         require(totalVotes >= minimumVotes, "Not enough votes");
         isVotingOpen = false;
     }
+
     // Get the number of candidates
     function getVotingEnd() public view returns(uint256){
        return(votingEnd);
     }
 
+    // get the time voting session starts
     function getVotingStart() public view returns(uint256){
        return(votingStart);
     }
@@ -101,25 +113,32 @@ contract Election {
         require(candidateIndex < candidates.length, "Invalid candidate index");
         return (candidates[candidateIndex].name, candidates[candidateIndex].voteCount);
     }
+
+    // get the number of candidates shortlisted
     function getCandidatesLength() public view returns (uint256){
         return candidates.length;
     }
+
     // Check if a voter has already voted
     function getVoterHasVoted(address  voter) public view returns (bool) {
         return voters[voter].hasVoted;
     }
 
+    // get the candidates each voters voted for
     function getVotedFor(address  voter) public view returns (uint256){
         return voters[voter].votedFor;
     }
 
+    // get the registered voters
     function getRegisteredVoters() public view returns (address[] memory){
         return registeredVoters;
     } 
 
+    // get the total votes
     function getTotalVotes() public view returns(uint256){
         return totalVotes;
     }
+
     // Get the name of the winning candidate
     function getWinner() public view returns (string memory) {
         //require(!isVotingOpen || timestamp >= votingEnd, "Voting has not ended yet");
@@ -134,6 +153,8 @@ contract Election {
         }
         return candidates[winningCandidateIndex].name;
     }
+
+    // start a new election - strictly by the admin / owner
    function newElection() public onlyAdmin(){
         delete candidates;
         totalVotes = 0;

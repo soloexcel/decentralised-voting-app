@@ -118,3 +118,28 @@
     
 }
 
+.adminRight {
+    margin: 0 auto;
+    width: 70%;
+}
+.adminRight p {
+    text-align: center;
+    padding: 1rem;
+}
+
+.adminPane input {
+    width: 50%;
+    padding: 1.2rem;
+    background-color: rgba(238, 228, 228, 0.219);
+    outline: none;
+    border: none;
+}
+
+.giveRight:hover {
+    background-color: rgba(238, 228, 228, 0.377);
+}
+
+.adminPane {
+    display: flex;
+    justify-content: space-evenly;
+}

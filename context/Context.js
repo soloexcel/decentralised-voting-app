@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import {ethers} from 'ethers'
 import Web3Modal from 'web3modal'
-import { contractAddress, ownerAddress, electionABI } from './config'
+import { contractAddress, electionABI } from './config'
 
 
 // const contractDetails = (signer) => new ethers.Contract(contractAddress, electionABI, signer);
@@ -28,11 +28,15 @@ export const ContextProvider = ({ children }) => {
   const router = useRouter();
   const [actualVoters, setActualVoters] = useState([]);
   const [walletAddr, setWalletAddr] = useState("");
+  const [admin, setAdmin] = useState('');
 
   useEffect(() => {
     connectedWallet();
     WalletTracker();
+    getAdmin();
   }, [])
+
+  
   
   // connect wallet
   const connectWallet = async () => {
@@ -87,6 +91,31 @@ const WalletTracker = async () => {
   }
 };
 
+//get admin
+const getAdmin = async () => {
+  // let admin; 
+  try {
+    const contract = await contractConnection();
+    let owner = await contract.getAdmin();
+    setAdmin(owner);
+  } catch (error) {
+    
+  }
+
+  // return admin;
+}
+
+// transfer ownership
+const transferOwnership = async (address) => {
+  try {
+    const contract = await contractConnection();
+    await contract.transferOwnership(address);
+    alert(`Administrative right succesfully transfered to:, ${address}`);
+
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 
 // contestants, and voting start date and end date timestamps
 const candidates = async (candidateNames, votingStartTime, votingEndTime, minVotes) => {
@@ -164,7 +193,7 @@ const registerVoter = async() => {
       //   /[^a-zA-Z0-9 ]/g,
       //   ""
       // );
-      alert(`User already registered.`);
+      alert(`${error.message}`);
     }
 }
 
@@ -216,7 +245,6 @@ const castVote = async (candidateIndex)=>{
 // define voters function outside of component
 const voters = async () => {
   const votersInfo = [];
-
   try {
     const contract = await contractConnection();
     const registeredVoters = await contract.getRegisteredVoters();
@@ -338,8 +366,8 @@ const newElection = async ()=>{
       console.log("New election can be created");
 
       await contract.newElection();
-      router.push("/candidates")
-      alert("New election created.");
+      router.push("/admin")
+      alert("Go ahead to shortlist candidates and required timestamps to start a new vote in session. ");
      }
   }catch(error){
      alert("Sorry, only admin can start a new election.");
@@ -350,7 +378,7 @@ const newElection = async ()=>{
 
 
   return (
-    <ElectionContext.Provider value = {{ connectWallet,getVTEnd,connectedWallet, voters,getCandidate,getCandidateLength,actualVoters,voters,walletAddr, ownerAddress, fetchContract, registerVoter, castVote, candidates,getTotalAndWinner,isVotingEnd,newElection }}>
+    <ElectionContext.Provider value = {{ connectWallet,getVTEnd,connectedWallet, transferOwnership, getCandidate,getCandidateLength,actualVoters,voters,walletAddr, admin, fetchContract, registerVoter, castVote, candidates,getTotalAndWinner,isVotingEnd,newElection }}>
         { children }
     </ElectionContext.Provider>
   );

@@ -19,6 +19,11 @@ Olalekan Solomon Awoyemi
 decentralised-voting-app.vercel.app
 ```
 
+#### Successfully verified contract Election on Etherscan.
+```bash
+https://mumbai.polygonscan.com/address/0x2F28c115cD4f7Ec43301c6EAD32558842C3fB087#code
+```
+
 
 ### CONTRACT EXPLANATION
 The smart contract presented is an implementation of an election process where voters can cast their votes for a set of candidates. The contract allows for the addition of contestants by the admin, registration of voters, and casting of votes. The smart contract provides a transparent and decentralized system for conducting elections without the need for intermediaries.
@@ -114,6 +119,7 @@ npm install
 ```shell
 npm run dev
 ```
+
 `HINT` After starting the local development server,  click on the port link or just copy to the Chrome Browser.
 
 ```shell
@@ -139,7 +145,12 @@ npx hardhat run script/deploy.js --network localhost
 
 ##### Other Requirement
 - Make sure Metamask is installed on your browser.
-- Connect an account that has goerli testnet with fake ETH.
+- Connect an account that has `Mumbai` testnet with fake `Matic`.
+
+#####  Get MATIC on Polygon Mumbai Testnet official faucet
+```bash
+https://blog.thirdweb.com/guides/get-matic-on-polygon-mumbai-testnet-faucet/
+```
 
 ### PROJECT DEPENDENCIES:
 `Solidity` `Hardhat` `Ethers` `web3modal`

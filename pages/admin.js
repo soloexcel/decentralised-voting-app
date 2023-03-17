@@ -5,7 +5,7 @@ import { Button, CandidateTable } from '../components/componentsIndex';
 import { ElectionContext } from '../context/Context';
 
 
-const Candidate = ({shortlistedCandidates}) => {
+const Admin = ({shortlistedCandidates}) => {
   const [shortlistname, setShortlistname] = useState('');
   const [reviewItem, setReviewItem] = useState([]);
   const [startDate, setStartDate] = useState('')
@@ -14,9 +14,10 @@ const Candidate = ({shortlistedCandidates}) => {
   const [endTime, setEndTime] = useState('')
   const [dnt, setDnt] = useState([])
   const [isCandidateListed, setIsCandidateListed] = useState(false)
+  const [transferAdminRightTo, setTransferAdminRightTo] = useState('')
   const router = useRouter()
   // const [submitButton, setSubmitButon] = useState(false)
-  const { candidates } = useContext(ElectionContext)
+  const { candidates, transferOwnership } = useContext(ElectionContext)
   
   const onChangeHandler = (e) => {
     setShortlistname(e.target.value);
@@ -82,6 +83,16 @@ const isValidEndTime = (endTime) => {
     
   }
 
+
+  // Transfer of Administration right
+  const signature = (e) => {
+    setTransferAdminRightTo(e.target.value);
+  }
+
+  const transferRight = () => {
+    transferOwnership(transferAdminRightTo);
+  }
+
   // cancel button
   const cancel = () => {
     setShortlistname('')
@@ -142,15 +153,19 @@ const isValidEndTime = (endTime) => {
   
             <Button className={Style.button} btnName="Ok" handleClick={dateTimeHandler} />  
           </div>
-          {/* <p className={Style.errorMsg}> */}
 
-          {/* </p> */}
+          <div className={Style.adminRight}>
+            <p>Incase you would like to transfer Administration right </p>
+            <div className={Style.adminPane}>
+              <input className={Style.giveRight} type="text" placeholder="address" value={transferAdminRightTo} onChange={signature} />
+              <Button className={Style.button} btnName="Transfer" handleClick={transferRight} />
+            </div>
+
           </div>
-  
-          {/* <div className={Style.button}> 
-            
-        </div> */}
-  
+
+         
+          </div>
+
         <div className={Style.review}>
           <h3>REVIEW</h3>
           <p className={Style.note}>
@@ -185,8 +200,10 @@ const isValidEndTime = (endTime) => {
             }}/>
           </div>
         </div>
+
+        
       </div>
       )
 };
 
-export default Candidate;
+export default Admin;
